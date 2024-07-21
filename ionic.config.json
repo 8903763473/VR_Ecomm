@@ -1,0 +1,7 @@
+{
+  "name": "VR-Test",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
