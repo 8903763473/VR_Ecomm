@@ -1,27 +1,40 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+main{
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+/* Keyframes for the marquee effect */
+@keyframes marqueeLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+/* Styles for the swiper wrapper */
+// .gallery__slider .swiper-wrapper {
+//   display: flex;
+//   width: 100%;
+//   animation: marqueeLeft1 20s linear infinite;
+// }
 
-  color: #8c8c8c;
-
-  margin: 0;
+/* Optional: Make sure the slides have consistent spacing */
+.gallery__slider .swiper-slide {
+  flex: 0 0 auto;
+  margin-right: 30px;
 }
 
-#container a {
-  text-decoration: none;
+
+@keyframes marqueeLeft1 {
+  0%{
+    transform: translateX(100);
+  }
+  100%{
+    transform: translateX(0);
+  }
 }

@@ -31,8 +31,10 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": []
+            "styles": [],
+            "scripts": [ "node_modules/jquery/dist/jquery.min.js"
+       
+          ]
           },
           "configurations": {
             "production": {
