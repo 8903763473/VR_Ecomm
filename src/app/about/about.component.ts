@@ -1,14 +1,11 @@
 import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
-import Swiper from 'swiper';
-import * as $ from 'jquery';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-about',
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.scss'],
 })
-export class HomePage implements AfterViewInit {
-  sliderInit3: any;
+export class AboutComponent  implements AfterViewInit {
 
   constructor(private renderer: Renderer2) {}
 
@@ -50,4 +47,5 @@ export class HomePage implements AfterViewInit {
 
     this.renderer.appendChild(document.body, script);
   }
+
 }
