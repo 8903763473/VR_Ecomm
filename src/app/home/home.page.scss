@@ -6,35 +6,6 @@ main{
   scrollbar-width: none;
 }
 
-/* Keyframes for the marquee effect */
-@keyframes marqueeLeft {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-/* Styles for the swiper wrapper */
-// .gallery__slider .swiper-wrapper {
-//   display: flex;
-//   width: 100%;
-//   animation: marqueeLeft1 20s linear infinite;
-// }
-
-/* Optional: Make sure the slides have consistent spacing */
-.gallery__slider .swiper-slide {
-  flex: 0 0 auto;
-  margin-right: 30px;
-}
 
 
-@keyframes marqueeLeft1 {
-  0%{
-    transform: translateX(100);
-  }
-  100%{
-    transform: translateX(0);
-  }
-}
+

@@ -13,6 +13,7 @@
   <meta name="msapplication-tap-highlight" content="no" />
 
   <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
   <!-- add to homescreen for ios -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -72,6 +73,25 @@
      <script src="assets/js/isotope.pkgd.min.js"></script>
      <script src="assets/js/jquery.waypoints.js"></script>
      <script src="assets/js/script.js"></script>
+
+     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+     <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          var swiper = new Swiper('.banner-two__slider', {
+              slidesPerView: 1,
+              loop: true,
+              autoplay: {
+                  delay: 3000, // 3 seconds
+                  disableOnInteraction: false,
+              },
+              speed: 1000, // 1 second
+              navigation: {
+                  nextEl: '.banner-two__arry-next',
+                  prevEl: '.banner-two__arry-prev',
+              },
+          });
+      });
+  </script>
 </body>
 
 </html>
