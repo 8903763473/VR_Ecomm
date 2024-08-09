@@ -30,11 +30,11 @@
                       <div class="login__content">
                           <h2 class="text-white mb-65">create account</h2>
                           <div class="form-area login__form">
-                              <form action="#0">
-                                  <input type="text" placeholder="User Name">
-                                  <input class="mt-30" type="email" placeholder="Email">
-                                  <input class="mt-30" type="password" placeholder="Enter Password">
-                                  <input class="mt-30" type="password" placeholder="Enter Confirm Password">
+                            <form (ngSubmit)="submitForm()">
+                                <input type="text" placeholder="User Name" [(ngModel)]="name" name="name" required>
+                                <input class="mt-30" type="email"   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  placeholder="Email" [(ngModel)]="email" name="email" required>
+                                <input class="mt-30" type="mobile" oninput="this.value = this.value.replace(/[^0-9]/g, '')" placeholder="Enter phone number" [(ngModel)]="mobile" name="mobile" required>
+                                <input class="mt-30" type="password" placeholder="Enter Password" oninput="this.value = this.value.replace(/[^0-9]/g, '')" [(ngModel)]="password" name="password" required>
                                   <button class="mt-30">Create Account</button>
                                   <div class="radio-btn mt-30">
                                       <span></span>

@@ -30,9 +30,9 @@
                       <div class="login__content">
                           <h2 class="text-white mb-65">Welcome Back</h2>
                           <div class="form-area login__form">
-                              <form action="#0">
-                                  <input type="email" placeholder="Email">
-                                  <input class="mt-30" type="password" placeholder="Enter Password">
+                              <form  (ngSubmit)="submitLogin()">
+                                  <input type="email" placeholder="Email"   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  [(ngModel)]="email" name="email" required>
+                                  <input class="mt-30" type="password"  oninput="this.value = this.value.replace(/[^0-9]/g, '')"placeholder="Enter Password"  [(ngModel)]="password" name="password" required>
                                   <button class="mt-30">Sign In</button>
                                   <div class="radio-btn mt-30">
                                       <span></span>

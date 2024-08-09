@@ -111,6 +111,7 @@ h2 {
   font-size: 40px;
   font-weight: 400;
   line-height: 50px;
+  visibility: visible;
 }
 
 h3 {
@@ -213,6 +214,7 @@ input {
 
 .mt-30 {
   margin-top: 30px;
+  visibility: visible !important;
 }
 
 .mt-35 {
@@ -374,6 +376,7 @@ input {
 
 .mb-30 {
   margin-bottom: 30px;
+  visibility: visible !important;
 }
 
 .mb-35 {
@@ -394,6 +397,7 @@ input {
 
 .mb-55 {
   margin-bottom: 55px;
+  visibility: visible !important;
 }
 
 .mb-60 {
@@ -402,6 +406,7 @@ input {
 
 .mb-65 {
   margin-bottom: 65px;
+  visibility: visible !important;
 }
 
 .mb-70 {
@@ -1563,6 +1568,7 @@ input {
 
 .fw-600 {
   font-weight: 600;
+  visibility: visible !important;
 }
 
 .lightPara-color {
@@ -1588,6 +1594,7 @@ input {
   overflow: hidden;
   text-align: center;
   border-radius: 100px;
+  visibility: visible;
 }
 .btn-one:hover, .btn-one-light:hover, .btn-two:hover {
   color: var(--primary-color);
@@ -1779,6 +1786,7 @@ input {
   font-weight: 600;
   color: var(--footer-color);
   transition: var(--transition);
+  visibility: visible;
 }
 .nav-pills .nav-item .nav-link:hover {
   color: var(--white);
@@ -1786,6 +1794,7 @@ input {
 .nav-pills .nav-item .nav-link.active {
   color: var(--white);
   position: relative;
+  visibility: visible !important;
 }
 .nav-pills .nav-item .nav-link.active::after {
   position: absolute;
@@ -1803,6 +1812,7 @@ input {
   padding: 10px 18px;
   border-radius: 100px;
   font-weight: 600;
+  visibility: visible !important;
 }
 
 .off-tag {
@@ -2212,6 +2222,7 @@ input {
 
 .section-header .section-title-icon {
   position: relative;
+  visibility: visible !important;
 }
 .section-header .section-title-icon span {
   position: absolute;
@@ -2241,6 +2252,7 @@ input {
   width: 21px;
   height: 14px;
   position: relative;
+  visibility: visible;
 }
 .title-icon::before {
   content: "";
@@ -3428,6 +3440,7 @@ input {
   align-items: center;
   flex-wrap: wrap;
   gap: 50px;
+  visibility: visible !important;
 }
 .get-now__content ul li {
   font-weight: 600;
@@ -3438,10 +3451,12 @@ input {
 }
 .get-now__content .get-info span {
   font-weight: 700;
+  visibility: visible;
 }
 .get-now__content .get-info del {
   font-weight: 500;
   margin-right: 20px;
+  visibility: visible;
 }
 .get-now__content .time-up .info span {
   font-size: 18px;
@@ -4174,6 +4189,7 @@ input {
 .view__left-item {
   border-radius: 10px;
   overflow: hidden;
+  visibility: visible;
 }
 .view__content {
   padding: 20px;
@@ -4197,6 +4213,7 @@ input {
   background-color: var(--sub-bg);
   border-radius: 10px;
   overflow: hidden;
+  visibility: visible !important;
 }
 
 .text-slider {

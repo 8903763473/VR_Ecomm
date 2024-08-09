@@ -16,7 +16,7 @@ export class HomePage implements AfterViewInit {
     this.loadScripts();
   }
 
-  private loadScripts() {
+   loadScripts() {
     const scripts = [
       'assets/js/jquery-3.7.1.min.js',
       'assets/js/bootstrap.min.js',
