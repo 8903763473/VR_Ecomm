@@ -19,15 +19,14 @@ export class LoginComponent  implements OnInit {
   }
 
   submitLogin() {
-    // Validate form fields
     if (!this.email || !this.password) {
-      alert('Please fill in both email and password.');
+      this.app.warningpopup=true
       return;
     }
   
     const post = {
-      email: this.email,
-      password: this.password
+      'email': this.email,
+      'password': this.password
     };
   
     console.log(post);

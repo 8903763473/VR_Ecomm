@@ -249,7 +249,29 @@
     </div>
 </div>
 
-    <ion-router-outlet></ion-router-outlet>
+<!-- warning -->
+<div class="popup" *ngIf="warningpopup">
+    <div class="modal fade show" id="statusErrorsModal" tabindex="-1" role="dialog" aria-labelledby="statusErrorsModalLabel" aria-hidden="true" style="display: contents;">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center p-lg-4">
+                    <!-- Warning Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon">
+                        <circle cx="12" cy="12" r="10" fill="#db3646"/>
+                        <text x="12" y="16" text-anchor="middle" font-size="12" fill="#fff" font-family="Arial, sans-serif">!</text>
+                    </svg>
+                    <!-- Warning Message -->
+                    <h4 class="text-danger mt-3">Invalid data!</h4>
+                    <p class="mt-2">This field is empty. Please try again.</p>
+                    <!-- Close Button -->
+                    <button type="button" class="btn btn-sm btn-danger mt-3" (click)="warningpopup=false" style="width: 100%;">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+<ion-router-outlet></ion-router-outlet>
 <!-- 
     <footer class="footer-area bg-image" data-background="assets/images/footer/footer-bg.jpg">
         <div class="container">

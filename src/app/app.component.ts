@@ -9,6 +9,7 @@ export class AppComponent implements OnInit{
   constructor() {}
   successPopup:boolean=false
   failedpopup:boolean=false
+  warningpopup:boolean=false
   scrolled: boolean = false;
   ngOnInit(): void {
   }
