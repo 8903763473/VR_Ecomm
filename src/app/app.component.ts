@@ -7,7 +7,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit{
   constructor() {}
-  
+  successPopup:boolean=false
+  failedpopup:boolean=false
   scrolled: boolean = false;
   ngOnInit(): void {
   }

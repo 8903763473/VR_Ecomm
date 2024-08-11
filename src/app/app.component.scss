@@ -1,10 +1,151 @@
-.menu-fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
+// success popup
+  .popup{
+    background-color: black;
     width: 100%;
-    z-index: 999;
-    background-color: #191919;
-    border-bottom: unset;
+    height: 100%;
+    top: 0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1111111;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   
+  }
+  /* Keyframe animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+@keyframes bounceIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+.modal-content{
+    background-color: #ffffff0f;
+    border: 1px solid white !important;
+    transform: translateY(-30px);
+    animation: slideIn 0.7s ease forwards;
+    box-shadow: 1px 1px 1px white !important;
+    
+}
+
+.modal#statusSuccessModal .modal-content, 
+.modal#statusErrorsModal .modal-content {
+	border-radius: 30px;
+}
+.modal#statusSuccessModal .modal-content svg, 
+.modal#statusErrorsModal .modal-content svg {
+	width: 100px; 
+	display: block; 
+	margin: 0 auto;
+}
+.modal#statusSuccessModal .modal-content .path, 
+.modal#statusErrorsModal .modal-content .path {
+	stroke-dasharray: 1000; 
+	stroke-dashoffset: 0;
+}
+.modal#statusSuccessModal .modal-content .path.circle, 
+.modal#statusErrorsModal .modal-content .path.circle {
+	-webkit-animation: dash 0.9s ease-in-out; 
+	animation: dash 0.9s ease-in-out;
+}
+.modal#statusSuccessModal .modal-content .path.line, 
+.modal#statusErrorsModal .modal-content .path.line {
+	stroke-dashoffset: 1000; 
+	-webkit-animation: dash 0.95s 0.35s ease-in-out forwards; 
+	animation: dash 0.95s 0.35s ease-in-out forwards;
+}
+.modal#statusSuccessModal .modal-content .path.check, 
+.modal#statusErrorsModal .modal-content .path.check {
+	stroke-dashoffset: -100; 
+	-webkit-animation: dash-check 0.95s 0.35s ease-in-out forwards; 
+	animation: dash-check 0.95s 0.35s ease-in-out forwards;
+}
+
+@-webkit-keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+@keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;
+	}
+	100%{
+		stroke-dashoffset: 0;
+	}
+}
+@-webkit-keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+@keyframes dash { 
+	0% {
+		stroke-dashoffset: 1000;}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+@-webkit-keyframes dash-check { 
+	0% {
+		stroke-dashoffset: -100;
+	}
+	100% {
+		stroke-dashoffset: 900;
+	}
+}
+@keyframes dash-check {
+	0% {
+		stroke-dashoffset: -100;
+	}
+	100% {
+		stroke-dashoffset: 900;
+	}
+}
+.box00{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+
+
+
+  

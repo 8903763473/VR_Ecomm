@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
 import Swiper from 'swiper';
 import * as $ from 'jquery';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-home',
@@ -9,11 +10,12 @@ import * as $ from 'jquery';
 })
 export class HomePage implements AfterViewInit {
   sliderInit3: any;
-
-  constructor(private renderer: Renderer2) {}
+  category:any=[]
+  constructor(private renderer: Renderer2,public api:ServiceService) {}
 
   ngAfterViewInit() {
     this.loadScripts();
+    this.getcategory()
   }
 
    loadScripts() {
@@ -50,4 +52,20 @@ export class HomePage implements AfterViewInit {
 
     this.renderer.appendChild(document.body, script);
   }
+
+// GetCategory
+
+getcategory() {
+  this.api.GetCategory().subscribe({
+    next: (res) => {  
+      console.log(res);
+      this.category=res
+    },
+    error: (err) => {
+      console.error('Error fetching categories:', err);
+    }
+  });
+}
+
+
 }

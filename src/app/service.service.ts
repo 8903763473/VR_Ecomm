@@ -6,8 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ServiceService {
-  private apiUrl = 'http://localhost:5000/api/';
-
+  private apiUrl = 'http://localhost:8000/api/';
   constructor(private http: HttpClient) {}
 
   registerUser(userData: any): Observable<any> {
@@ -18,4 +17,8 @@ export class ServiceService {
     return this.http.post(this.apiUrl + 'user/login', userData);
   }
 
+  GetCategory(): Observable<any> {
+    return this.http.get(this.apiUrl + 'category/getAllCategories');
+    
+  }
 }

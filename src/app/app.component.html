@@ -1,5 +1,4 @@
 <ion-app>
-
     <div class="top__header pt-30 pb-30">
         <div class="container">
             <div class="top__wrapper">
@@ -211,6 +210,45 @@
             </div>
         </div>
     </header>
+ 
+<!-- Success popup -->
+<div class="popup " *ngIf="successPopup " >
+    <div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" style="display: contents !important;"> 
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document"> 
+            <div class="modal-content"> 
+                <div class="modal-body text-center p-lg-4"> 
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                        <circle class="path circle" fill="none" stroke="#00ab5c" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                        <polyline class="path check" fill="none" stroke="#00ab5c" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " /> 
+                    </svg> 
+                    <h4 class="text-success mt-3" style="color: #00ab5c;">Oh Yeah!</h4> 
+                    <p class="mt-3">You have successfully logged in.</p>
+                    <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal" (click)="successPopup=false" style="width: 100%;background-color: #00ab5c !important;">Ok</button> 
+                </div> 
+            </div> 
+        </div> 
+    </div>
+</div>
+
+<!-- failed popup -->
+<div class="popup " *ngIf="failedpopup " >
+    <div class="modal fade" id="statusErrorsModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" style="display: contents;"> 
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document"> 
+            <div class="modal-content"> 
+                <div class="modal-body text-center p-lg-4"> 
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                        <circle class="path circle" fill="none" stroke="#db3646" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" /> 
+                        <line class="path line" fill="none" stroke="#db3646" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3" />
+                        <line _ngcontent-ng-c3807424168="" fill="none" stroke="#db3646" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" y2="92.2" class="path line" x2="34.4"></line>                    </svg> 
+                    <h4 class="text-danger mt-3">Invalid data!</h4> 
+                    <p class="mt-3">This field is Wrong , please login.</p>
+                    <button type="button" class="btn btn-sm mt-3 btn-danger" data-bs-dismiss="modal" style="width: 100%;" (click)="failedpopup=false">Ok</button> 
+                </div> 
+            </div> 
+        </div> 
+    </div>
+</div>
+
     <ion-router-outlet></ion-router-outlet>
 <!-- 
     <footer class="footer-area bg-image" data-background="assets/images/footer/footer-bg.jpg">

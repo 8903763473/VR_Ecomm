@@ -79,14 +79,14 @@ CSS TABLE OF CONTENTS
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--montserrat);
-  color: var(--paragraph);
-  background-color: var(--black);
-  line-height: 28px;
-  font-weight: 400;
-  text-transform: capitalize;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: var(--montserrat) !important;
+  color: var(--paragraph) !important;
+  background-color: var(--black) !important;
+  line-height: 28px !important;
+  font-weight: 400 !important;
+  text-transform: capitalize !important;
 }
 
 h1,
@@ -153,10 +153,10 @@ del {
 }
 
 a {
-  text-decoration: none;
-  display: inline-block;
-  color: var(--heading-color);
-  transition: var(--transition);
+  text-decoration: none !important;
+  display: inline-block !important;
+  color: var(--heading-color) !important;
+  transition: var(--transition) !important;
 }
 
 a:hover {
@@ -1640,7 +1640,7 @@ input {
 
 .btn-one-light, .btn-two {
   background-color: var(--white);
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
 }
 .btn-one-light:hover, .btn-two:hover {
   color: var(--white);
@@ -1780,19 +1780,19 @@ input {
 .nav-pills .nav-item .nav-link {
   font-size: 14px;
   padding: 0;
-  background-color: transparent;
+  background-color: transparent !important;
   border-radius: 0px;
   line-height: 12px;
   font-weight: 600;
-  color: var(--footer-color);
-  transition: var(--transition);
+  color: var(--footer-color) !important;
+  transition: var(--transition) !important;
   visibility: visible;
 }
 .nav-pills .nav-item .nav-link:hover {
-  color: var(--white);
+  color: var(--white) !important;
 }
 .nav-pills .nav-item .nav-link.active {
-  color: var(--white);
+  color: var(--white) !important;
   position: relative;
   visibility: visible !important;
 }

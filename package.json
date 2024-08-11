@@ -28,6 +28,8 @@
     "@capacitor/keyboard": "6.0.1",
     "@capacitor/status-bar": "6.0.0",
     "@ionic/angular": "^8.0.0",
+    "animate.css": "^4.1.1",
+    "bootstrap": "^5.3.3",
     "counterup2": "^2.0.2",
     "crypto-js": "^4.2.0",
     "firebase": "^10.12.4",
