@@ -928,21 +928,16 @@
     </div>
     <div class="marquee-wrapper text-slider">
         <div class="marquee-inner to-left">
-            <ul class="marqee-list d-flex">
-                <li class="marquee-item">
-                    E-Cigarettes <img src="assets/images/icon/title-left.svg" alt="icon"> <span>Vape Pens</span>
-                    <img src="assets/images/icon/title-left.svg" alt="icon">
-                    Vape Juice <img src="assets/images/icon/title-left.svg" alt="icon"> <span>E-Cigarettes</span>
-                    <img src="assets/images/icon/title-left.svg" alt="icon">
-                    Vape Pens <img src="assets/images/icon/title-left.svg" alt="icon"> <span>Vape Juice</span>
-                    <img src="assets/images/icon/title-left.svg" alt="icon">
-                    E-Cigarettes <img src="assets/images/icon/title-left.svg" alt="icon"> <span>Vape Pens</span>
-                    <img src="assets/images/icon/title-left.svg" alt="icon">
-                    Vape Juice <img src="assets/images/icon/title-left.svg" alt="icon"> <span>E-Cigarettes</span>
-                </li>
-            </ul>
+          <ul class="marquee-list d-flex">
+            <!-- Iterate over category items and create list items dynamically -->
+            <li class="marquee-item" *ngFor="let textSlider of category">
+              <img src="assets/images/icon/title-left.svg" alt="icon">
+              <span>{{ textSlider.category }}</span>
+            </li>
+          </ul>
         </div>
-    </div>
+      </div>
+      
     <div class="container">
         <div class="bor-top pb-65"></div>
     </div>
