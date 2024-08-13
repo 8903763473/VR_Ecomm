@@ -5,6 +5,12 @@ main{
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+.productOffer {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 415px; 
+}
 
 
 

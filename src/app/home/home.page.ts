@@ -14,12 +14,17 @@ export class HomePage implements AfterViewInit {
   category:any=[]
   products:any=[]
   singleCategory:any=[]
+  FilterId:string='1';
+  filterproduct:any=[]
+  highProduct:any=[]
   constructor(private renderer: Renderer2,public api:ServiceService,public route:Router) {}
 
   ngAfterViewInit() {
+    this.Filter(this.FilterId);
     this.loadScripts();
     this.getcategory();
     this.productcategory()
+    this.HighOfferProduct();
   }
 
    loadScripts() {
@@ -91,6 +96,52 @@ if(data==='Vegetables'){
   localStorage.setItem('products', singleCategoryJson)
   this.route.navigate(['/product', data]);
 }
+}
 
+Filter(data: string) {
+  this.FilterId = data;
+  if (this.FilterId === '1') {
+    this.api.GetlatestProduct().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.filterproduct=res
+      },
+      error: (err) => {
+        console.error('Failed to fetch latest products', err);
+      }
+    });
+  } else if (this.FilterId === '2') {
+    this.api.GetbestProduct().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.filterproduct=res
+      },
+      error: (err) => {
+        console.error('Failed to fetch best products', err);
+      }
+    });
+  } else if (this.FilterId === '3') {
+    this.api.GetnewProduct().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.filterproduct=res
+      },
+      error: (err) => {
+        console.error('Failed to fetch new products', err);
+      }
+    });
+  }
+}
+
+
+
+HighOfferProduct(){
+  this.api.GethighOfferProduct().subscribe({
+    next:(res=>{
+      console.log(res);
+      this.highProduct=res
+      
+    })
+  })
 }
 }
