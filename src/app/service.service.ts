@@ -17,8 +17,25 @@ export class ServiceService {
     return this.http.post(this.apiUrl + 'user/login', userData);
   }
 
-  GetCategory(): Observable<any> {
+  GetAllCategory(): Observable<any> {
     return this.http.get(this.apiUrl + 'category/getAllCategories');
     
   }
+  getCategory(): Observable<any> {
+    return this.http.get(this.apiUrl + 'product/getProductsByCategory/Vegetables');
+  }
+
+  GetlatestProduct(): Observable<any> {
+    return this.http.get(this.apiUrl + 'product/getLatestProducts');
+  }
+  GetbestProduct(): Observable<any> {
+    return this.http.get(this.apiUrl + 'product/getBestProducts');
+  }
+  GetnewProduct(): Observable<any> {
+    return this.http.get(this.apiUrl + 'product/getNewProducts');
+  }
+  GethighOfferProduct(): Observable<any> {
+    return this.http.get(this.apiUrl + 'product/getHighOfferProducts');
+  }
+
 }

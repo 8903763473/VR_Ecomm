@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
 import Swiper from 'swiper';
 import * as $ from 'jquery';
 import { ServiceService } from '../service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,14 @@ import { ServiceService } from '../service.service';
 export class HomePage implements AfterViewInit {
   sliderInit3: any;
   category:any=[]
-  constructor(private renderer: Renderer2,public api:ServiceService) {}
+  products:any=[]
+  singleCategory:any=[]
+  constructor(private renderer: Renderer2,public api:ServiceService,public route:Router) {}
 
   ngAfterViewInit() {
     this.loadScripts();
-    this.getcategory()
+    this.getcategory();
+    this.productcategory()
   }
 
    loadScripts() {
@@ -56,7 +60,7 @@ export class HomePage implements AfterViewInit {
 // GetCategory
 
 getcategory() {
-  this.api.GetCategory().subscribe({
+  this.api.GetAllCategory().subscribe({
     next: (res) => {  
       console.log(res);
       this.category=res
@@ -67,5 +71,26 @@ getcategory() {
   });
 }
 
+productcategory() {
+  this.api.getCategory().subscribe({
+    next: (res) => {  
+      console.log(res);
+      this.products=res
+    },
+    error: (err) => {
+      console.error('Error fetching categories:', err);
+    }
+  });
+}
 
+singleproduct(data:any){
+console.log(data);
+if(data==='Vegetables'){
+  this.singleCategory=this.products
+  const singleCategoryJson = JSON.stringify(this.singleCategory);
+  localStorage.setItem('products', singleCategoryJson)
+  this.route.navigate(['/product', data]);
+}
+
+}
 }

@@ -35,7 +35,7 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'product',
+    path: 'product/:data',
     component: ProductComponent
   },
   {

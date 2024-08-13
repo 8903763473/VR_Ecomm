@@ -116,7 +116,7 @@
                 <div class="swiper category__slider">
                     <div class="swiper-wrapper" >
                         <div class="swiper-slide" *ngFor="let item of category">
-                            <div class="category__item category-two__item text-center">
+                            <div class="category__item category-two__item text-center" (click)="singleproduct(item.category)">
                                 <a class="category__image d-block" >
                                     <img src="{{item.image}}" alt="image" style="    width: 96%;
                                     height: 191px;
