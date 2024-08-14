@@ -98,40 +98,49 @@ if(data==='Vegetables'){
 }
 }
 
+private latestProductCache: any[] = [];
+private bestProductCache: any[] = [];
+private newProductCache: any[] = [];
+
 Filter(data: string) {
   this.FilterId = data;
+  let cache: any[];
+  let apiCall;
   if (this.FilterId === '1') {
-    this.api.GetlatestProduct().subscribe({
-      next: (res) => {
-        console.log(res);
-        this.filterproduct=res
-      },
-      error: (err) => {
-        console.error('Failed to fetch latest products', err);
-      }
-    });
+    cache = this.latestProductCache;
+    apiCall = this.api.GetlatestProduct();
   } else if (this.FilterId === '2') {
-    this.api.GetbestProduct().subscribe({
-      next: (res) => {
-        console.log(res);
-        this.filterproduct=res
-      },
-      error: (err) => {
-        console.error('Failed to fetch best products', err);
-      }
-    });
+    cache = this.bestProductCache;
+    apiCall = this.api.GetbestProduct();
   } else if (this.FilterId === '3') {
-    this.api.GetnewProduct().subscribe({
+    cache = this.newProductCache;
+    apiCall = this.api.GetnewProduct();
+  } else {
+    console.log('Invalid FilterId');
+    return;
+  }
+  if (cache.length > 0) {
+    this.filterproduct = cache;
+  } else {
+    apiCall.subscribe({
       next: (res) => {
         console.log(res);
-        this.filterproduct=res
+        if (this.FilterId === '1') {
+          this.latestProductCache = res;
+        } else if (this.FilterId === '2') {
+          this.bestProductCache = res;
+        } else if (this.FilterId === '3') {
+          this.newProductCache = res;
+        }
+        this.filterproduct = res;
       },
       error: (err) => {
-        console.error('Failed to fetch new products', err);
+        console.error('Failed to fetch products', err);
       }
     });
   }
 }
+
 
 
 
