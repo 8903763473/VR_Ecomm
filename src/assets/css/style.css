@@ -3173,6 +3173,7 @@ input {
   position: relative;
   max-width: 280px;
   margin: 0 auto;
+  height: 400px;
 }
 .product__image .back-image {
   position: absolute;
@@ -4124,6 +4125,7 @@ input {
 .gallery__image::before {
   background: linear-gradient(180deg, rgba(26, 26, 26, 0) 0%, #1a1a1a 100%);
   border-radius: 10px;
+  /* height: 700px; */
 }
 .gallery__content {
   position: absolute;

@@ -162,8 +162,8 @@
                         <div class="swiper-slide" *ngFor="let item of category">
                             <div class="category__item category-two__item text-center" (click)="singleproduct(item.category)">
                                 <a class="category__image d-block" >
-                                    <img src="{{item.image}}" alt="image" style="    width: 96%;
-                                    height: 191px;
+                                    <img src="{{item.image}}" alt="image" style="    width: 90%;
+                                    height: 184px;
                                     border-radius: 50%">
                                     <!-- <div class="category-icon" >
                                         <img src="assets/images/category/category-icon1.png" alt="icon">
@@ -320,15 +320,17 @@
                         <div class="col-xxl-3 col-xl-4 col-md-6" *ngFor="let filter of filterproduct">
                             <div class="product__item bor">
                                 <a href="#0" class="wishlist"><i class="fa-regular fa-heart"></i></a>
-                                <a class="product__image pt-20 d-block">
+                                <a class="product__image pt-20 d-block" style=" display: flex !important;
+                                align-items: center;
+                                justify-content: center;">
                                     <img class="font-image" src="{{filter.productImage}}"
                                         alt="image">
                                     <img class="back-image" src="{{filter.productImage}}"
-                                        alt="image">
+                                        alt="image" >
                                 </a>
                                 <div class="product__content">
                                     <h4 class="mb-15"><a class="primary-hover" >{{filter.productName}}</a></h4>
-                                    <del>${{filter.productOriginalRate}}</del><span class="primary-color ml-10">${{filter.productOriginalRate}}</span>
+                                    <del>${{filter.productOriginalRate}}</del><span class="primary-color ml-10">${{filter.productCurrentRate}}</span>
                                     <div class="star mt-20">
                                         <i class="fa-solid fa-star"></i>
                                         <i class="fa-solid fa-star"></i>
@@ -505,7 +507,9 @@
                         <div class="off-tag">{{Offer.productDiscount}}% <br>
                             off</div>
                         <div class="gallery__image image">
-                            <img src="{{Offer.productImage}}" alt="image">
+                            <img src="{{Offer.productImage}}" alt="image" style="    width: 100%;
+                            min-height: 500px;
+                            object-fit: contain;">
                         </div>
                         <div class="gallery__content">
                             <h3 class="mb-10"><a href="shop-2.html">{{Offer.productName}}</a></h3>
