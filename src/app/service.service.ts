@@ -37,5 +37,9 @@ export class ServiceService {
   GethighOfferProduct(): Observable<any> {
     return this.http.get(this.apiUrl + 'product/getHighOfferProducts');
   }
-
+productdetail(id:any){
+  return this.http.get(this.apiUrl + 'getProductsById/'+id);
 }
+} 
+
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -8,21 +9,23 @@ import { Component, OnInit } from '@angular/core';
 export class ProductComponent  implements OnInit {
   singleCategory:any=[]
   category:any=[]
-  constructor() { }
+  constructor(public route:Router) { }
 
   ngOnInit() {
-    // Retrieve the JSON string from localStorage
     const singleCategoryJson = localStorage.getItem('products');
-  
-    // Check if the data exists and parse it
-    if (singleCategoryJson) {
+      if (singleCategoryJson) {
       this.category = JSON.parse(singleCategoryJson);
-      console.log(this.category); // This should log the array of products
+      console.log(this.category); 
     } else {
       console.log('No data found in localStorage.');
-      this.category = []; // Initialize to an empty array if no data found
+      this.category = []; 
     }
   }
   
-
+  ProductDetails(data:any){
+console.log(data);
+this.route.navigate(['/productDetail', data._id]);
+const singleproduct = JSON.stringify(data);
+localStorage.setItem('singleproduct',singleproduct)
+  }
 }

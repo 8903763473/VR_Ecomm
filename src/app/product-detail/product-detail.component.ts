@@ -1,50 +1,27 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
 })
-export class ProductDetailComponent {
+export class ProductDetailComponent implements OnDestroy{
   constructor(private renderer: Renderer2) {}
-
+  singleproduct:any
+  productdetails:any=[]
+  
   ngAfterViewInit() {
-    this.loadScripts();
+    this.Details()
   }
 
-  private loadScripts() {
-    const scripts = [
-      'assets/js/jquery-3.7.1.min.js',
-      'assets/js/bootstrap.min.js',
-      'assets/js/swiper-bundle.min.js',
-      'assets/js/jquery.counterup.min.js',
-      'assets/js/nice-select.min.js',
-      'assets/js/pace.min.js',
-      'assets/js/isotope.pkgd.min.js',
-      'assets/js/script.js'
-    ];
-
-    this.loadScriptSequentially(scripts);
+  Details(): void {
+    this.singleproduct = localStorage.getItem('singleproduct');
+    this.productdetails = JSON.parse(this.singleproduct);
+    console.log('Product Details:', this.productdetails);
   }
 
-  private loadScriptSequentially(scripts: string[]) {
-    if (scripts.length === 0) return;
-
-    const script = this.renderer.createElement('script');
-    script.src = scripts[0];
-    script.type = 'text/javascript';
-    script.async = true;
-
-    script.onload = () => {
-      this.loadScriptSequentially(scripts.slice(1));
-    };
-
-    script.onerror = () => {
-      console.error(`Failed to load script: ${scripts[0]}`);
-      this.loadScriptSequentially(scripts.slice(1));
-    };
-
-    this.renderer.appendChild(document.body, script);
+  ngOnDestroy(): void {
+    localStorage.removeItem('singleproduct');
   }
 
 }

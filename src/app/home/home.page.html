@@ -19,7 +19,7 @@
                                 products</p>
                             <div class="banner-two__info mt-30" data-animation="fadeInUp" data-delay="1.7s">
                                 <span class="mb-10">Starting Price</span>
-                                <h3>$99.00</h3>
+                                <h3>₹99.00</h3>
                             </div>
                             <div class="btn-wrp mt-65">
                                 <a href="shop.html" class="btn-one" data-animation="fadeInUp"
@@ -45,7 +45,7 @@
                                 products</p>
                             <div class="banner-two__info mt-30" data-animation="fadeInUp" data-delay="1.7s">
                                 <span class="mb-10">Starting Price</span>
-                                <h3>$99.00</h3>
+                                <h3>₹99.00</h3>
                             </div>
                             <div class="btn-wrp mt-65">
                                 <a href="shop.html" class="btn-one" data-animation="fadeInUp"
@@ -72,7 +72,7 @@
                                 products</p>
                             <div class="banner-two__info mt-30" data-animation="fadeInUp" data-delay="1.7s">
                                 <span class="mb-10">Starting Price</span>
-                                <h3>$99.00</h3>
+                                <h3>₹99.00</h3>
                             </div>
                             <div class="btn-wrp mt-65">
                                 <a href="shop.html" class="btn-one" data-animation="fadeInUp"
@@ -99,7 +99,7 @@
                                 products</p>
                             <div class="banner-two__info mt-30" data-animation="fadeInUp" data-delay="1.7s">
                                 <span class="mb-10">Starting Price</span>
-                                <h3>$99.00</h3>
+                                <h3>₹99.00</h3>
                             </div>
                             <div class="btn-wrp mt-65">
                                 <a href="shop.html" class="btn-one" data-animation="fadeInUp"
@@ -126,7 +126,7 @@
                                 products</p>
                             <div class="banner-two__info mt-30" data-animation="fadeInUp" data-delay="1.7s">
                                 <span class="mb-10">Starting Price</span>
-                                <h3>$99.00</h3>
+                                <h3>₹99.00</h3>
                             </div>
                             <div class="btn-wrp mt-65">
                                 <a href="shop.html" class="btn-one" data-animation="fadeInUp"
@@ -165,68 +165,10 @@
                                     <img src="{{item.image}}" alt="image" style="    width: 90%;
                                     height: 184px;
                                     border-radius: 50%">
-                                    <!-- <div class="category-icon" >
-                                        <img src="assets/images/category/category-icon1.png" alt="icon">
-                                    </div> -->
                                 </a>
                                 <h4 class="mt-30"><a >{{item.category}}</a></h4>
                             </div>
                         </div>
-                        <!-- <div class="swiper-slide">
-                            <div class="category__item category-two__item text-center">
-                                <a href="shop.html" class="category__image d-block">
-                                    <img src="assets/images/category/category-image2.png" alt="image">
-                                    <div class="category-icon">
-                                        <img src="assets/images/category/category-icon2.png" alt="icon">
-                                    </div>
-                                </a>
-                                <h4 class="mt-30"><a href="shop.html">best mod</a></h4>
-                            </div>
-                        </div> -->
-                        <!-- <div class="swiper-slide">
-                            <div class="category__item category-two__item text-center">
-                                <a href="shop.html" class="category__image d-block">
-                                    <img src="assets/images/category/category-image3.png" alt="image">
-                                    <div class="category-icon">
-                                        <img src="assets/images/category/category-icon3.png" alt="icon">
-                                    </div>
-                                </a>
-                                <h4 class="mt-30"><a href="shop.html">best pan</a></h4>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="category__item category-two__item text-center">
-                                <a href="shop.html" class="category__image d-block">
-                                    <img src="assets/images/category/category-image4.png" alt="image">
-                                    <div class="category-icon">
-                                        <img src="assets/images/category/category-icon4.png" alt="icon">
-                                    </div>
-                                </a>
-                                <h4 class="mt-30"><a href="shop.html">best pod</a></h4>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="category__item category-two__item text-center">
-                                <a href="shop.html" class="category__image d-block">
-                                    <img src="assets/images/category/category-image5.png" alt="image">
-                                    <div class="category-icon">
-                                        <img src="assets/images/category/category-icon5.png" alt="icon">
-                                    </div>
-                                </a>
-                                <h4 class="mt-30"><a href="shop.html">best tank</a></h4>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="category__item category-two__item text-center">
-                                <a href="shop.html" class="category__image d-block">
-                                    <img src="assets/images/category/category-image6.png" alt="image">
-                                    <div class="category-icon">
-                                        <img src="assets/images/category/category-icon6.png" alt="icon">
-                                    </div>
-                                </a>
-                                <h4 class="mt-30"><a href="shop.html">Best vaps</a></h4>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -318,19 +260,19 @@
                 <div id="latest-item" class="tab-pane fade show active" >
                     <div class="row g-4" >
                         <div class="col-xxl-3 col-xl-4 col-md-6" *ngFor="let filter of filterproduct">
-                            <div class="product__item bor">
+                            <div class="product__item bor" >
                                 <a href="#0" class="wishlist"><i class="fa-regular fa-heart"></i></a>
                                 <a class="product__image pt-20 d-block" style=" display: flex !important;
                                 align-items: center;
-                                justify-content: center;">
+                                justify-content: center;" (click)="ProductDetails(filter)">
                                     <img class="font-image" src="{{filter.productImage}}"
-                                        alt="image">
+                                        alt="image" >
                                     <img class="back-image" src="{{filter.productImage}}"
                                         alt="image" >
                                 </a>
                                 <div class="product__content">
                                     <h4 class="mb-15"><a class="primary-hover" >{{filter.productName}}</a></h4>
-                                    <del>${{filter.productOriginalRate}}</del><span class="primary-color ml-10">${{filter.productCurrentRate}}</span>
+                                    <del>₹{{filter.productOriginalRate}}</del><span class="primary-color ml-10">₹{{filter.productCurrentRate}}</span>
                                     <div class="star mt-20">
                                         <i class="fa-solid fa-star"></i>
                                         <i class="fa-solid fa-star"></i>
@@ -512,7 +454,7 @@
                             object-fit: contain;">
                         </div>
                         <div class="gallery__content">
-                            <h3 class="mb-10"><a href="shop-2.html">{{Offer.productName}}</a></h3>
+                            <h3 class="mb-10"><a (click)="ProductDetails(Offer)">{{Offer.productName}}</a></h3>
                             <p class="productOffer">{{Offer.productDescription}}</p>
                             <a href="shop-2.html" class="btn-two mt-25"><span>Shop Now</span></a>
                         </div>

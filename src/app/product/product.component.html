@@ -93,7 +93,8 @@
                   <div *ngFor="let product of category" class="col-xl-4 col-lg-6 col-md-6">
                     <div class="product__item bor">
                       <a href="#0" class="wishlist"><i class="fa-regular fa-heart"></i></a>
-                      <a href="shop-single.html" class="product__image pt-20 d-block" >
+                      <a class="product__image pt-20 d-block" style="display: flex !important;
+                      align-items: center;justify-content: center;" (click)="ProductDetails(product)">
                         <img class="font-image" [src]="product.productImage" alt="image" >
                         <img class="back-image" [src]="product.productImage" alt="image">
                       </a>
@@ -101,8 +102,8 @@
                         <h4 class="mb-15">
                           <a class="primary-hover" href="shop-single.html">{{ product.productName }}</a>
                         </h4>
-                        <del>{{ product.originalPrice }}</del>
-                        <span class="primary-color ml-10">{{ product.currentPrice }}</span>
+                        <del>₹{{product.productOriginalRate}}</del>
+                        <span class="primary-color ml-10">₹{{product.productCurrentRate}}</span>
                         <div class="star mt-20">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>

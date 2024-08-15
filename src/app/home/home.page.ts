@@ -1,6 +1,4 @@
 import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
-import Swiper from 'swiper';
-import * as $ from 'jquery';
 import { ServiceService } from '../service.service';
 import { Router } from '@angular/router';
 
@@ -17,57 +15,25 @@ export class HomePage implements AfterViewInit {
   FilterId:string='1';
   filterproduct:any=[]
   highProduct:any=[]
+private latestProductCache: any[] = [];
+private bestProductCache: any[] = [];
+private newProductCache: any[] = [];
+
   constructor(private renderer: Renderer2,public api:ServiceService,public route:Router) {}
 
   ngAfterViewInit() {
     this.Filter(this.FilterId);
-    this.loadScripts();
+    // this.loadScripts();
     this.getcategory();
     this.productcategory()
     this.HighOfferProduct();
   }
 
-   loadScripts() {
-    const scripts = [
-      'assets/js/jquery-3.7.1.min.js',
-      'assets/js/bootstrap.min.js',
-      'assets/js/swiper-bundle.min.js',
-      'assets/js/jquery.counterup.min.js',
-      'assets/js/nice-select.min.js',
-      'assets/js/pace.min.js',
-      'assets/js/isotope.pkgd.min.js',
-      'assets/js/script.js'
-    ];
-
-    this.loadScriptSequentially(scripts);
-  }
-
-  private loadScriptSequentially(scripts: string[]) {
-    if (scripts.length === 0) return;
-
-    const script = this.renderer.createElement('script');
-    script.src = scripts[0];
-    script.type = 'text/javascript';
-    script.async = true;
-
-    script.onload = () => {
-      this.loadScriptSequentially(scripts.slice(1));
-    };
-
-    script.onerror = () => {
-      console.error(`Failed to load script: ${scripts[0]}`);
-      this.loadScriptSequentially(scripts.slice(1));
-    };
-
-    this.renderer.appendChild(document.body, script);
-  }
 
 // GetCategory
-
 getcategory() {
   this.api.GetAllCategory().subscribe({
     next: (res) => {  
-      console.log(res);
       this.category=res
     },
     error: (err) => {
@@ -75,11 +41,10 @@ getcategory() {
     }
   });
 }
-
+// click category//
 productcategory() {
   this.api.getCategory().subscribe({
     next: (res) => {  
-      console.log(res);
       this.products=res
     },
     error: (err) => {
@@ -88,8 +53,8 @@ productcategory() {
   });
 }
 
+// single product
 singleproduct(data:any){
-console.log(data);
 if(data==='Vegetables'){
   this.singleCategory=this.products
   const singleCategoryJson = JSON.stringify(this.singleCategory);
@@ -98,13 +63,11 @@ if(data==='Vegetables'){
 }
 }
 
-private latestProductCache: any[] = [];
-private bestProductCache: any[] = [];
-private newProductCache: any[] = [];
-
+// filter
 Filter(data: string) {
   this.FilterId = data;
   let cache: any[];
+  this.filterproduct =[]
   let apiCall;
   if (this.FilterId === '1') {
     cache = this.latestProductCache;
@@ -124,7 +87,6 @@ Filter(data: string) {
   } else {
     apiCall.subscribe({
       next: (res) => {
-        console.log(res);
         if (this.FilterId === '1') {
           this.latestProductCache = res;
         } else if (this.FilterId === '2') {
@@ -141,16 +103,21 @@ Filter(data: string) {
   }
 }
 
-
-
-
+// high OfferProduct
 HighOfferProduct(){
   this.api.GethighOfferProduct().subscribe({
     next:(res=>{
-      console.log(res);
       this.highProduct=res
       
     })
   })
 }
+
+// productDetails
+ProductDetails(product:any){
+  this.route.navigate(['/productDetail', product._id]);
+  const singleproduct = JSON.stringify(product);
+  localStorage.setItem('singleproduct',singleproduct)
+}
+
 }

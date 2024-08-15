@@ -145,7 +145,7 @@ p {
 
 span {
   display: inline-block;
-  color: var(--span);
+  color: var(--span) ;
 }
 
 del {
@@ -160,7 +160,7 @@ a {
 }
 
 a:hover {
-  color: var(--heading-color);
+  color: var(--heading-color) !important;
 }
 
 ul {
@@ -3647,6 +3647,7 @@ input {
   background-color: transparent;
   border-radius: 10px;
   color: var(--white);
+  text-align: center;
 }
 @media screen and (max-width: 575px) {
   .shop-single .cart-wrp .discount {
@@ -4332,7 +4333,7 @@ input {
   border-radius: 10px;
 }
 .contact form .nice-select span {
-  color: var(--span);
+  color: var(--span) !important;
 }
 .contact form .nice-select ul {
   width: 100%;
