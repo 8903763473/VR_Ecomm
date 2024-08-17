@@ -3704,14 +3704,14 @@ input {
 
 .category__image {
   position: relative;
-  width: 210px;
-  height: 210px;
-  line-height: 210px;
+  width: 200px;
+  height: 200px;
+  /* line-height: 210px; */
   text-align: center;
   border-radius: 50%;
   transition: var(--transition);
   margin: 0 auto;
-  border: 1px solid #232323;
+  /* border: 1px solid #232323; */
 }
 .category__image .category-icon {
   position: absolute;

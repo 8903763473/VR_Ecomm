@@ -13,8 +13,11 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
 this.loadScripts()
+
   }
-  
+ 
+
+
   loadScripts() {
     const scripts = [
       'assets/js/jquery-3.7.1.min.js',

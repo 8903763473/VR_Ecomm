@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ServiceService {
   private apiUrl = 'http://localhost:8000/api/';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   registerUser(userData: any): Observable<any> {
     return this.http.post(this.apiUrl + 'user/register', userData);
@@ -19,7 +19,7 @@ export class ServiceService {
 
   GetAllCategory(): Observable<any> {
     return this.http.get(this.apiUrl + 'category/getAllCategories');
-    
+
   }
   getCategory(): Observable<any> {
     return this.http.get(this.apiUrl + 'product/getProductsByCategory/Vegetables');
@@ -37,9 +37,17 @@ export class ServiceService {
   GethighOfferProduct(): Observable<any> {
     return this.http.get(this.apiUrl + 'product/getHighOfferProducts');
   }
-productdetail(id:any){
-  return this.http.get(this.apiUrl + 'getProductsById/'+id);
+  productdetail(id: any) {
+    return this.http.get(this.apiUrl + 'getProductsById/' + id);
+  }
+  addCart(data: any) {
+    return this.http.post(this.apiUrl + 'cart/addtoCart', data);
+  }
+
+  GetCart(id: any) {
+    return this.http.get(this.apiUrl + 'getmyCart/' + id);
+
+  }
 }
-} 
 
 

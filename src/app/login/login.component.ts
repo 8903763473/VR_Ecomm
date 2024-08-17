@@ -10,40 +10,53 @@ import { AppComponent } from '../app.component';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent  implements OnInit {
+export class LoginComponent implements OnInit {
 
   email: string = '';
   password: string = '';
-  constructor(private api: ServiceService,public app:AppComponent) {}
+  userDetails: any = []
+  constructor(private api: ServiceService, public app: AppComponent) { }
   ngOnInit(): void {
   }
 
   submitLogin() {
     if (!this.email || !this.password) {
-      this.app.warningpopup=true
+      this.app.warningpopup = true
       return;
     }
-  
+
     const post = {
       'email': this.email,
       'password': this.password
     };
-  
+
     console.log(post);
-  
+
     this.api.loginUser(post).subscribe({
       next: (res: any) => {
         console.log('Login successful', res);
-          if (res.user && res.user.encryptedData && res.user.key && res.user.iv) {
+
+        if (res.user && res.user.encryptedData && res.user.key && res.user.iv) {
           try {
             // Decrypting the data
-            const decryptedData = this.decryptData(
+            let decryptedData: any = this.decryptData(
               res.user.encryptedData,
               res.user.key,
               res.user.iv
             );
-            console.log('Decrypted Data:', decryptedData);
-            this.app.successPopup = true; 
+            console.log(decryptedData);
+           decryptedData= JSON.parse(decryptedData)
+           console.log(decryptedData);
+           
+            localStorage.setItem('email', decryptedData.email);
+            localStorage.setItem('mobile', decryptedData.mobile);
+            localStorage.setItem('userId', decryptedData._id);
+            localStorage.setItem('name', decryptedData.name);
+            localStorage.setItem('image', decryptedData.image);
+            // const UserData: any = [decryptedData]
+            // localStorage.setItem('userDetails', JSON.stringify(UserData))
+            // console.log('Decrypted Data:', JSON.parse(UserData));
+            this.app.successPopup = true;
           } catch (error) {
             console.error('Decryption failed', error);
           }
@@ -54,11 +67,11 @@ export class LoginComponent  implements OnInit {
       error: (err: any) => {
         console.error('Login failed', err);
         alert('Login failed. Please check your credentials and try again.');
-        this.app.failedpopup=true
+        this.app.failedpopup = true
       }
     });
   }
-  
+
 
   decryptData(encryptedData: string, key: string, iv: string): string {
     const keyBytes = CryptoJS.enc.Hex.parse(key);
@@ -76,5 +89,5 @@ export class LoginComponent  implements OnInit {
 
     return decrypted.toString(CryptoJS.enc.Utf8);
   }
-  
+
 }

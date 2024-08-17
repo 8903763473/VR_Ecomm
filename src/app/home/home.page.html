@@ -1,5 +1,6 @@
 <main>
 
+
     <!-- Banner area start here -->
     <section class="banner-two">
        
@@ -162,9 +163,9 @@
                         <div class="swiper-slide" *ngFor="let item of category">
                             <div class="category__item category-two__item text-center" (click)="singleproduct(item.category)">
                                 <a class="category__image d-block" >
-                                    <img src="{{item.image}}" alt="image" style="    width: 90%;
-                                    height: 184px;
-                                    border-radius: 50%">
+                                    <img src="{{item.image}}" alt="image" style="    width: 92%;
+                                    height: 178px;
+                                    border-radius: 50%;object-fit: cover;">
                                 </a>
                                 <h4 class="mt-30"><a >{{item.category}}</a></h4>
                             </div>
@@ -282,10 +283,13 @@
                                     </div>
 
                                 </div>
-                                <a class="product__cart d-block bor-top" href="#0"><i
+                                <a class="product__cart d-block bor-top" (click)="AddCart(filter)"><i
                                         class="fa-regular fa-cart-shopping primary-color me-1"></i>
                                     <span>Add to
                                         cart</span></a>
+                                        <!-- <a class="product__cart d-block bor-top"  ><i
+                                            class="fa-regular fa-cart-shopping primary-color me-1"></i>
+                                        <span>Added</span></a> -->
                             </div>
                         </div>
                        
@@ -510,4 +514,8 @@
         </div>
     </section>
     <!-- Brand area end here -->
+
+
 </main>
+
+

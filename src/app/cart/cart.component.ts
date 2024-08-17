@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-cart',
@@ -7,8 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent  implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {}
-
+  constructor(public api:ServiceService) { }
+  userDetails:any=[]
+  Id:any
+  User:any=[]
+  ngOnInit() {
+    this.userDetails = localStorage.getItem('userId');
+    console.log('User Details:', this.userDetails);
+    this.Id = this.userDetails;
+    console.log( this.Id );
+    
+    this.getcartproduct();
+  }
+  
+ 
+  
+  getcartproduct() {
+    this.api.GetCart(this.Id).subscribe({
+      next: (res) => {
+        console.log('Cart Products:', res);
+      },
+      error: (err) => {
+        console.error('Error fetching cart products:', err);
+      }
+    });
+  }
+  
 }
