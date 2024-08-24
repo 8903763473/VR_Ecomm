@@ -45,9 +45,24 @@ export class ServiceService {
   }
 
   GetCart(id: any) {
-    return this.http.get(this.apiUrl + 'getmyCart/' + id);
-
+    return this.http.post(this.apiUrl + 'cart/getmyCart', id);
   }
+ 
+  removeCartItem(productId: any, userId: any) {
+    return this.http.delete(this.apiUrl + 'cart/removeCart/' + productId,userId);
+  }
+  
+  
+
+  // removeCartItem(data: any) {
+  //   return this.http.delete(`${this.apiUrl}cart/removeCart?userId=${data.userId}&productId=${data.productId}`);
+  // }
+  Contact(data: any) {
+    return this.http.post(this.apiUrl + 'contact/send', data);
+  }
+
+
+
 }
 
 

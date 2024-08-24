@@ -15,9 +15,12 @@ import { ProductComponent } from './product/product.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { CartComponent } from './cart/cart.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
-  declarations: [AppComponent,RegisterComponent,LoginComponent,ProductComponent,ProductDetailComponent,FooterComponent,HeaderComponent],
+  declarations: [AppComponent,RegisterComponent,LoginComponent,ProductComponent,
+    ProductDetailComponent,FooterComponent,HeaderComponent,CartComponent,ContactComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FormsModule,HttpClientModule,BrowserAnimationsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
