@@ -12,6 +12,109 @@ main{
   max-width: 300px;
 }
 
+// .addcartpopup{
+//   display: flex;
+//   align-items: center;
+//   justify-content: end;
+//   margin: 30px;
+//   button{
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     background: #fa4f09;
+//     padding: 26px;
+//     width: 8%;
+//     border-radius: 8px;
+//     height: 71px;
+//     i{
+//       color: white;
+//       font-size: 30px;
+//     }
+//   }
+// }
+
+
+.notificationpopup{
+  width: 42%;
+  background: white;
+  height: 91px;
+  bottom: 0;
+  position: fixed;
+  z-index: 11;
+  right: 0;
+  margin: 20px;
+  box-shadow: 2px 2px 5px gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  animation: slideIn 0.5s ease-out;
+
+}
+.close{
+  color: black;
+    margin: 18px;
+    font-size: 20px;
+}
+.text{
+  color: red;
+    font-weight: 600;
+    font-size: 23px;
+    font-family: inherit;
+}
+.addcartpopup {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  position: relative;
+  z-index: 111;
+  margin: 11px;
+}
+
+.addcartpopup button {
+  background-color: #fa4f09;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 17px;
+  border-radius: 7px;
+  margin: 10px;
+  height: 45px;
+  width: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  i{
+    color: white;
+  }
+}
+
+.circle {
+  position: absolute;
+  top: -6px;
+  right: -4px;
+  width: 30px;
+  height: 30px;
+  background-color: #fa4f09;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 
+@keyframes slideIn {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -49,11 +49,16 @@ export class ServiceService {
   }
  
   removeCartItem(productId: any, userId: any) {
-    return this.http.delete(this.apiUrl + 'cart/removeCart/' + productId,userId);
+    const params = new HttpParams().set('userId', userId);
+    return this.http.delete(this.apiUrl + 'cart/removeCart/' + productId, { params });
   }
   
+  clearMyCart(userId: any): Observable<any> {
+    return this.http.delete(`${this.apiUrl}cart/clearMyCart`, {
+      params: { userId: userId }
+    });
+  }
   
-
   // removeCartItem(data: any) {
   //   return this.http.delete(`${this.apiUrl}cart/removeCart?userId=${data.userId}&productId=${data.productId}`);
   // }

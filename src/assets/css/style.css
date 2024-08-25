@@ -2655,7 +2655,7 @@ input {
   border-bottom: 1px solid #d9d9d9;
 }
 .header-wrapper .main-menu li .sub-menu li a {
-  color: var(--black);
+  color: var(--black) !important;
   text-transform: capitalize;
   font-weight: 600;
   font-size: 14px;

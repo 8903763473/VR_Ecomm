@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -8,12 +9,13 @@ import { ServiceService } from '../service.service';
 })
 export class CartComponent implements OnInit {
 
-  constructor(public api: ServiceService) { }
+  constructor(public api: ServiceService,public route:Router) { }
   userDetails: any
   Id: any
   User: any = []
   cartproduct: any = []
   cartTotal: number = 0;
+  DeleteAlertpopup:boolean=false
   ngOnInit() {
     this.Id = localStorage.getItem('userId');
     console.log('User Details:', this.userDetails);
@@ -28,10 +30,10 @@ export class CartComponent implements OnInit {
     this.api.GetCart(post).subscribe({
       next: (res: any) => {
         this.cartproduct = res;
-        console.log(this.cartproduct);
+        // console.log(this.cartproduct);
 
         this.calculateTotal();
-        console.log('Cart Products:', res);
+        // console.log('Cart Products:', res);
       },
       error: (err) => {
         console.error('Error fetching cart products:', err);
@@ -47,20 +49,33 @@ export class CartComponent implements OnInit {
 
 
   RemoveCart(item: any) {
-    console.log('Removing item:', item);
-    
     let productId = item.productId;
-  let post={
-    "userId":this.Id
-  }
-    this.api.removeCartItem(productId,post).subscribe({
+    this.api.removeCartItem(productId, this.Id).subscribe({
       next: (res: any) => {
-        console.log('Item removed:', res);
+        this.getcartproduct()
+        // console.log('Item removed:', res);
       },
       error: (err) => {
         console.error('Error removing cart item:', err);
       }
     });
+  }
+  
+  deleteAllCart() {
+    this.api.clearMyCart(this.Id).subscribe({
+      next: (res: any) => {
+        console.log('Cart cleared:', res);
+        this.DeleteAlertpopup=false
+      },
+      error: (err) => {
+        console.error('Error removing cart item:', err);
+      }
+    });
+  }
+  
+  continueCart() {
+    this.route.navigate(['./home']);
+  
   }
   
 

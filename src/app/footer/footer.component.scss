@@ -5,3 +5,9 @@ main{
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  .footer-area {
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+  }

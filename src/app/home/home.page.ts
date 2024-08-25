@@ -20,7 +20,9 @@ export class HomePage implements AfterViewInit {
   private newProductCache: any[] = [];
   cartproduct: any = []
   cartAddproduct: any = []
-  userId: any
+  userId: any;
+  totalQuantity:any
+  CartaddPopup:boolean=false
   constructor(private renderer: Renderer2, public api: ServiceService, public route: Router) { }
 
   ngAfterViewInit() {
@@ -30,6 +32,7 @@ export class HomePage implements AfterViewInit {
     this.productcategory()
     this.HighOfferProduct();
     this.userId = localStorage.getItem('userId');
+   this.totalQuantity= localStorage.getItem('cartquantity')
   }
 
 
@@ -126,17 +129,31 @@ export class HomePage implements AfterViewInit {
   AddCart(data: any) {
     console.log(data);
     let post = {
-      "productId": data._id,
-      "quantity": data.productQuantity,
-      "userId": this.userId
-    }
+        "productId": data._id,
+        "quantity": data.productQuantity,
+        "userId": this.userId
+    };
     this.api.addCart(post).subscribe({
-      next: (res => {
-        console.log(res);
-        this.cartproduct = res
-        //  this.cartAddproduct = JSON.stringify(this.cartproduct);
-        // localStorage.setItem('cart',this.cartAddproduct)
-      })
-    })
-  }
+        next: (res => {
+            console.log(res);
+            this.cartproduct = res;
+
+            // Calculate the total quantity of items in the cart
+            this.totalQuantity = this.cartproduct?.items?.reduce((acc: number, item: any) => acc + item.quantity, 0);
+            console.log(this.totalQuantity); 
+
+            // Save the total quantity to localStorage
+            localStorage.setItem('cartquantity', this.totalQuantity.toString());
+
+            // Show the cart add popup
+            this.CartaddPopup = true;
+
+            // Hide the popup after 3 seconds (3000 ms)
+            setTimeout(() => {
+                this.CartaddPopup = false;
+            }, 3000);
+        })
+    });
+}
+
 }

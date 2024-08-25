@@ -515,7 +515,26 @@
     </section>
     <!-- Brand area end here -->
 
+<div class="notificationpopup" *ngIf="CartaddPopup">
+    <div style="    display: flex;
+    align-items: center;">
+        <div class="addcartpopup">
+            <button>
+                <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+            <div class="circle">{{ totalQuantity}}</div>
+        </div>
+        <div class="text">
+            Items Added
+        </div>
+    </div>
+    <div class="close" (click)="CartaddPopup=false">
+        <i class="fa-solid fa-xmark">‌</i>
+    </div>
+</div>
 
+   
+    
 </main>
 
 
