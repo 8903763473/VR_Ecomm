@@ -58,16 +58,22 @@ export class ServiceService {
       params: { userId: userId }
     });
   }
-  
-  // removeCartItem(data: any) {
-  //   return this.http.delete(`${this.apiUrl}cart/removeCart?userId=${data.userId}&productId=${data.productId}`);
-  // }
+
   Contact(data: any) {
     return this.http.post(this.apiUrl + 'contact/send', data);
   }
 
+  CreateOrder(data: any) {
+    return this.http.post(this.apiUrl + 'payment/create-order', data);
+  }
 
+VerifyPayment(data:any){
+  return this.http.post(this.apiUrl + 'payment/verify-payment', data);
+}
 
+CheckOutProduct(data:any){
+  return this.http.post(this.apiUrl + 'checkout/checkoutProducts',data);
+}
 }
 
 

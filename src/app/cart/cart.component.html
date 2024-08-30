@@ -28,7 +28,7 @@
                   <label class="product-removal">Edit</label>
               </div>
 
-<div *ngIf="cartproduct.length!=0">
+<div *ngIf="cartproduct?.items?.length!=0">
     <div class="product p-4 bor-bottom d-flex justify-content-between align-items-center" *ngFor="let item of cartproduct.items">
         <div class="product-details d-flex align-items-center">
             <img [src]="item.productImage" alt="image">
@@ -58,7 +58,7 @@
           
               
 
-              <div class="emptypopup" *ngIf="cartproduct.length==0">
+              <div class="emptypopup" *ngIf="cartproduct?.items.length==0">
                 <div class="image">
                     <img src="../../assets/images/no cart.png">
                 </div>
@@ -67,7 +67,7 @@
 
           </div>
           <!-- shopping-cart-mobile -->
-          <div class="shopping-cart mobile-view bor sub-bg">
+          <div class="shopping-cart mobile-view bor sub-bg" *ngIf="cartproduct?.items?.length!=0">
 
               <div class="product p-4 bor-top bor-bottom" *ngFor="let item of cartproduct.items">
                   <div class="product-details d-flex align-items-center">

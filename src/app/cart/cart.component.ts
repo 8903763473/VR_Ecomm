@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ServiceService } from '../service.service';
 import { Router } from '@angular/router';
 
@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartComponent implements OnInit {
 
@@ -16,6 +17,7 @@ export class CartComponent implements OnInit {
   cartproduct: any = []
   cartTotal: number = 0;
   DeleteAlertpopup:boolean=false
+  EmptyCart:boolean=false
   ngOnInit() {
     this.Id = localStorage.getItem('userId');
     console.log('User Details:', this.userDetails);
@@ -30,13 +32,12 @@ export class CartComponent implements OnInit {
     this.api.GetCart(post).subscribe({
       next: (res: any) => {
         this.cartproduct = res;
-        // console.log(this.cartproduct);
-
+        console.log(this.cartproduct);
         this.calculateTotal();
-        // console.log('Cart Products:', res);
       },
       error: (err) => {
         console.error('Error fetching cart products:', err);
+     this.cartproduct.items=[]
       }
     });
   }
@@ -52,8 +53,9 @@ export class CartComponent implements OnInit {
     let productId = item.productId;
     this.api.removeCartItem(productId, this.Id).subscribe({
       next: (res: any) => {
-        this.getcartproduct()
-        // console.log('Item removed:', res);
+        // this.getcartproduct();
+        window.location.reload()
+        console.log('Item removed:', res);
       },
       error: (err) => {
         console.error('Error removing cart item:', err);
@@ -62,6 +64,8 @@ export class CartComponent implements OnInit {
   }
   
   deleteAllCart() {
+    console.log('jsjjj');
+    
     this.api.clearMyCart(this.Id).subscribe({
       next: (res: any) => {
         console.log('Cart cleared:', res);
@@ -74,9 +78,8 @@ export class CartComponent implements OnInit {
   }
   
   continueCart() {
-    this.route.navigate(['./home']);
-  
-  }
-  
+    this.route.navigate(['/home'], { queryParams: { ref: 'cart' } });
+}
+
 
 }

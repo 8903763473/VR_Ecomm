@@ -127,7 +127,7 @@ export class HomePage implements AfterViewInit {
   }
 
   AddCart(data: any) {
-    console.log(data);
+    // console.log(data);
     let post = {
         "productId": data._id,
         "quantity": data.productQuantity,
@@ -137,18 +137,10 @@ export class HomePage implements AfterViewInit {
         next: (res => {
             console.log(res);
             this.cartproduct = res;
-
-            // Calculate the total quantity of items in the cart
             this.totalQuantity = this.cartproduct?.items?.reduce((acc: number, item: any) => acc + item.quantity, 0);
             console.log(this.totalQuantity); 
-
-            // Save the total quantity to localStorage
             localStorage.setItem('cartquantity', this.totalQuantity.toString());
-
-            // Show the cart add popup
             this.CartaddPopup = true;
-
-            // Hide the popup after 3 seconds (3000 ms)
             setTimeout(() => {
                 this.CartaddPopup = false;
             }, 3000);

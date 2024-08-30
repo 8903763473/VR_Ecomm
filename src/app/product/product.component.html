@@ -112,17 +112,17 @@
                             <i class="fa-solid fa-star"></i>
                         </div>
                       </div>
-                      <a class="product__cart d-block bor-top" href="#0">
+                      <a class="product__cart d-block bor-top" (click)="AddCart(product)">
                         <i class="fa-regular fa-cart-shopping primary-color me-1"></i> <span>Add to cart</span>
                       </a>
                     </div>
                   </div>
                 </div>
                 <div class="pagi-wrp mt-65">
-                  <a href="#0" class="pagi-btn">01</a>
-                  <a href="#0" class="pagi-btn active">02</a>
-                  <a href="#0" class="pagi-btn">03</a>
-                  <a href="#0" class="fa-regular ms-2 primary-hover fa-angle-right"></a>
+                  <a class="pagi-btn">01</a>
+                  <a class="pagi-btn active">02</a>
+                  <a class="pagi-btn">03</a>
+                  <a class="fa-regular ms-2 primary-hover fa-angle-right"></a>
                 </div>
               </div>
               
@@ -130,4 +130,23 @@
       </div>
   </section>
   <!-- Product area end here -->
+
+   <!-- notification popup -->
+   <div class="notificationpopup" *ngIf="CartaddPopup">
+    <div style="    display: flex;
+    align-items: center;">
+        <div class="addcartpopup">
+            <button>
+                <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+            <div class="circle">{{ totalQuantity}}</div>
+        </div>
+        <div class="text">
+            Items Added
+        </div>
+    </div>
+    <div class="close" (click)="CartaddPopup=false">
+        <i class="fa-solid fa-xmark">‌</i>
+    </div>
+</div>
 </main>

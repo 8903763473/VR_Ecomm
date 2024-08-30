@@ -65,16 +65,16 @@ CSS TABLE OF CONTENTS
 	});
 
 	// Preloader area start here ***
-	paceOptions = {
-		ajax: true,
-		document: true,
-		eventLag: false,
-	};
+	// paceOptions = {
+	// 	ajax: true,
+	// 	document: true,
+	// 	eventLag: false,
+	// };
 
-	Pace.on("done", function () {
-		$("#preloader").addClass("isdone");
-		$(".loading").addClass("isdone");
-	});
+	// Pace.on("done", function () {
+	// 	$("#preloader").addClass("isdone");
+	// 	$(".loading").addClass("isdone");
+	// });
 	// Preloader area end here ***
 
 	// Banner five slider area end here ***

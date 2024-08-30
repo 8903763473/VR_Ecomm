@@ -16,18 +16,18 @@
   <!-- Checkout area start here -->
   <section class="checkout-area pt-130 pb-130">
       <div class="container">
-          <div class="row g-4">
+          <div class="row g-4" >
               <div class="col-lg-8">
                   <div class="checkout__item-left sub-bg">
                       <h3 class="mb-40">Billing Details</h3>
-                      <label class="mb-10" for="name">Your Name *</label>
-                      <input class="mb-20" id="name" type="text">
+                      <label class="mb-10" for="name"  >Your Name *</label>
+                      <input class="mb-20" id="name" type="text" [(ngModel)]="Name">
                       <label class="mb-10" for="email">Email Address *</label>
-                      <input class="mb-20" id="email" type="email">
+                      <input class="mb-20" id="email" type="email" [(ngModel)]="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" >
                       <label class="mb-10" for="companyName">Company Name (Optional)</label>
-                      <input class="mb-20" id="companyName" type="text">
+                      <input class="mb-20" id="companyName" type="text" [(ngModel)]="Company">
                       <h5 class="mb-10">Country / Region *</h5>
-                      <select class="mb-20" name="subject">
+                      <select class="mb-20" name="subject" [(ngModel)]="country">
                           <option value="0">United state america</option>
                           <option value="1">United Kingdom</option>
                           <option value="2">Australia</option>
@@ -35,22 +35,23 @@
                           <option value="4">France</option>
                       </select>
                       <label class="mb-10" for="streetAddress">Street Address *</label>
-                      <input placeholder="1837 E Homer M Adams Pkwy" class="mb-10" id="streetAddress" type="text">
-                      <input class="mb-20" id="streetAddress2" type="text">
+                      <input placeholder="1837 E Homer M Adams Pkwy" class="mb-10" id="streetAddress" type="text" [(ngModel)]="street1">
+                      <input class="mb-20" id="streetAddress2" type="text" [(ngModel)]="street2">
                       <label class="mb-10" for="townName">Town / City *</label>
-                      <input class="mb-20" id="townName" type="text">
+                      <input class="mb-20" id="townName" type="text" [(ngModel)]="city">
                       <h5 class="mb-10">State *</h5>
-                      <select class="mb-20" name="subject">
-                          <option value="0">Georgia / ohio / new york</option>
-                          <option value="1">Georgia</option>
-                          <option value="2">Ohio</option>
-                          <option value="3">New York</option>
-                          <option value="4">Texas</option>
+                      <select class="mb-20" name="subject" [(ngModel)]="state" >
+                        <option value="Georgia / Ohio / New York">Georgia / Ohio / New York</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Ohio">Ohio</option>
+                        <option value="New York">New York</option>
+                        <option value="Texas">Texas</option>
                       </select>
+                      
                       <label class="mb-10" for="zipCode">ZIP Code *</label>
-                      <input class="mb-20" id="zipCode" type="number">
+                      <input class="mb-20" id="zipCode" type="tel" [(ngModel)]="zipcode" maxlength="6" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                       <label class="mb-10" for="phone">Phone *</label>
-                      <input class="mb-20" id="phone" type="text">
+                      <input class="mb-20" id="phone" maxlength="10" type="tel" [(ngModel)]="phone"  oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                       <div class="radio-btn">
                           <span></span>
                           <a class="ml-10 fw-bold" href="register.html">Create An Account?</a>
@@ -69,16 +70,13 @@
                       <ul>
                           <li class="bor-bottom pb-4">
                               <h4>Products</h4>
-                              <h4>Subtotal</h4>
+                              <h4>Price</h4>
                           </li>
-                          <li class="bor-bottom py-4"><a href="#">Secretary desk</a> <span>$15.00</span></li>
-                          <li class="bor-bottom py-4"><a href="#">Secretary desk</a> <span>$15.00</span></li>
-                          <li class="bor-bottom py-4"><a href="#">Secretary desk</a> <span>$15.00</span></li>
-                          <li class="bor-bottom py-4"><a href="#">Secretary desk</a> <span>$15.00</span></li>
-                          <li class="bor-bottom py-4"><a href="#">Secretary desk</a> <span>$15.00</span></li>
+                          <li class="bor-bottom py-4" *ngFor="let order of cartproduct.items">
+                            <a >{{order.productName}}</a> <span>₹{{order.productCurrentRate}}</span></li>
                           <li class="bor-bottom py-4">
-                              <h4>Subtotal</h4>
-                              <h4>$999.00</h4>
+                              <h4>Total</h4>
+                              <h4>₹{{cartTotal}}</h4>
                           </li>
                       </ul>
                       <div class="py-4 bor-bottom">
@@ -101,7 +99,7 @@
                       <p class="pt-30 bor-top">Your personal data will be used to process
                           your order, support your experience
                           throughout this website.</p>
-                      <a href="#0" class="btn-one mt-35"><span>Place Order</span></a>
+                      <a class="btn-one mt-35" (click)="submitLogin()"><span>Place Order</span></a>
 
                   </div>
               </div>

@@ -515,7 +515,7 @@
     </section>
     <!-- Brand area end here -->
 
-<div class="notificationpopup" *ngIf="CartaddPopup">
+<div class="notificationpopup"[ngClass]="{'d-flex': CartaddPopup, 'd-none': !CartaddPopup}">
     <div style="    display: flex;
     align-items: center;">
         <div class="addcartpopup">

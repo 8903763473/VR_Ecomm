@@ -33,9 +33,15 @@ main{
 //   }
 // }
 
+.d-flex {
+  display: flex;
+}
 
+.d-none {
+  display: none;
+}
 .notificationpopup{
-  width: 42%;
+  width: auto;
   background: white;
   height: 91px;
   bottom: 0;

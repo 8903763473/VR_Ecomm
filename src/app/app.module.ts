@@ -17,10 +17,13 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { CartComponent } from './cart/cart.component';
 import { ContactComponent } from './contact/contact.component';
+import { HomePage } from './home/home.page';
+import { HomePageModule } from './home/home.module';
+import { CheckOutComponent } from './check-out/check-out.component';
 
 @NgModule({
-  declarations: [AppComponent,RegisterComponent,LoginComponent,ProductComponent,
-    ProductDetailComponent,FooterComponent,HeaderComponent,CartComponent,ContactComponent],
+  declarations: [AppComponent,RegisterComponent,LoginComponent,ProductComponent,CheckOutComponent,
+    ProductDetailComponent,FooterComponent,HeaderComponent,CartComponent,ContactComponent,CartComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FormsModule,HttpClientModule,BrowserAnimationsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

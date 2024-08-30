@@ -1597,7 +1597,7 @@ input {
   visibility: visible;
 }
 .btn-one:hover, .btn-one-light:hover, .btn-two:hover {
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
   background-color: var(--white);
 }
 .btn-one:hover::before, .btn-one-light:hover::before, .btn-two:hover::before {
@@ -1943,7 +1943,7 @@ input {
 .radio-btn .radio-btn-active::after {
   background-color: var(--white);
 }
-
+/* 
 .pace {
   pointer-events: none;
   -webkit-user-select: none;
@@ -2120,7 +2120,7 @@ input {
   100% {
     opacity: 0;
   }
-}
+} */
 .mouse-cursor {
   position: fixed;
   left: 0;
