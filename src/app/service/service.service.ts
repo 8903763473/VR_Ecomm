@@ -74,6 +74,11 @@ VerifyPayment(data:any){
 CheckOutProduct(data:any){
   return this.http.post(this.apiUrl + 'checkout/checkoutProducts',data);
 }
+
+SendFeedback(data:any){
+  return this.http.post(this.apiUrl + 'feedback/send',data);
+}
+
 }
 
 

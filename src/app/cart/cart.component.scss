@@ -47,6 +47,24 @@ main{
   width: 219px;
 }
 
+  .Checkoutbutton{
+  background: #fa4f09;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  button{
+    color: white;
+    font-weight: 500;
+    padding: 3px;
+
+  }
+}
+
+
+
+
 // -----Delete alert popup
 .cartDeletepopup{
   background: #000000de;
@@ -109,6 +127,7 @@ main{
     width: 100%;
     margin: 20px;
     gap: 30px;
+    cursor: pointer;
     .Cancel{
       background: #fa4f09;
       color: white;

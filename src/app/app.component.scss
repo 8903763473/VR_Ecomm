@@ -52,17 +52,17 @@
 
 
 .modal-content{
-    background-color: #ffffff0f;
+    background-color: #181818;
     border: 1px solid white !important;
     transform: translateY(-30px);
     animation: slideIn 0.7s ease forwards;
-    box-shadow: 1px 1px 1px white !important;
+    // box-shadow: 1px 1px 1px white !important;
     
 }
 
 .modal#statusSuccessModal .modal-content, 
 .modal#statusErrorsModal .modal-content {
-	border-radius: 30px;
+	border-radius: 11px;
 }
 .modal#statusSuccessModal .modal-content svg, 
 .modal#statusErrorsModal .modal-content svg {

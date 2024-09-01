@@ -1,27 +1,28 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ServiceService } from '../service.service';
+
 import { Router } from '@angular/router';
+import { ServiceService } from '../service/service.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartComponent implements OnInit {
 
-  constructor(public api: ServiceService,public route:Router) { }
+  constructor(public api: ServiceService, public route: Router) { }
   userDetails: any
   Id: any
   User: any = []
   cartproduct: any = []
   cartTotal: number = 0;
-  DeleteAlertpopup:boolean=false
-  EmptyCart:boolean=false
+  DeleteAlertpopup: boolean = false
+  EmptyCart: boolean = false
   ngOnInit() {
     this.Id = localStorage.getItem('userId');
     console.log('User Details:', this.userDetails);
     console.log(this.Id);
+    // this.cartproduct.items = []
     this.getcartproduct();
   }
 
@@ -33,11 +34,13 @@ export class CartComponent implements OnInit {
       next: (res: any) => {
         this.cartproduct = res;
         console.log(this.cartproduct);
+        this.EmptyCart = this.cartproduct.items.length === 0;
         this.calculateTotal();
+     
       },
       error: (err) => {
         console.error('Error fetching cart products:', err);
-     this.cartproduct.items=[]
+        this.EmptyCart=true
       }
     });
   }
@@ -62,24 +65,27 @@ export class CartComponent implements OnInit {
       }
     });
   }
-  
+
   deleteAllCart() {
     console.log('jsjjj');
-    
+
     this.api.clearMyCart(this.Id).subscribe({
       next: (res: any) => {
         console.log('Cart cleared:', res);
-        this.DeleteAlertpopup=false
+        this.DeleteAlertpopup = false
       },
       error: (err) => {
         console.error('Error removing cart item:', err);
       }
     });
   }
-  
-  continueCart() {
-    this.route.navigate(['/home'], { queryParams: { ref: 'cart' } });
-}
 
+  continueCart() {
+    this.route.navigate(['/home']);
+  }
+
+  RouteCheckout() {
+    this.route.navigate(['/CheckOut']);
+  }
 
 }

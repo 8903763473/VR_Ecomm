@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ServiceService } from '../service.service';
 import { HomePage } from '../home/home.page';
 import { AppComponent } from '../app.component';
+import { ServiceService } from '../service/service.service';
 
 @Component({
   selector: 'app-product',

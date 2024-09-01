@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceService } from '../service.service';
 import * as CryptoJS from 'crypto-js';
 import { HttpClient } from '@angular/common/http';
 import { AppComponent } from '../app.component';
+import { ServiceService } from '../service/service.service';
 
 
 @Component({

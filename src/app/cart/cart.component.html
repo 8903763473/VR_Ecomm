@@ -1,126 +1,153 @@
-
 <main>
-  <!-- Page banner area start here -->
-  <section class="page-banner bg-image pt-130 pb-130" data-background="assets/images/banner/inner-banner.jpg" style="background-image: url(assets/images/banner/inner-banner.jpg);">
-      <div class="container">
-          <h2 class="wow fadeInUp mb-15" data-wow-duration="1.1s" data-wow-delay=".1s">Cart Page</h2>
-          <div class="breadcrumb-list wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".3s">
-              <a href="index-2.html" class="primary-hover"><i class="fa-solid fa-house me-1"></i> Home <i
-                      class="fa-regular text-white fa-angle-right"></i></a>
-              <span>Cart</span>
-          </div>
-      </div>
-  </section>
-  <!-- Page banner area end here -->
-
-  <!-- cart page area start here -->
-  <section class="cart-page pt-130 pb-130">
-      <div class="container">
-
-          <div class="shopping-cart radius-10 bor sub-bg">
-
-              <div
-                  class="column-labels py-3 px-4 d-flex justify-content-between align-items-center fw-bold text-white text-uppercase">
-                  <label class="product-details">Product</label>
-                  <label class="product-price">Price</label>
-                  <label class="product-quantity">Quantity</label>
-                  <label class="product-line-price">Total</label>
-                  <label class="product-removal">Edit</label>
-              </div>
-
-<div *ngIf="cartproduct?.items?.length!=0">
-    <div class="product p-4 bor-bottom d-flex justify-content-between align-items-center" *ngFor="let item of cartproduct.items">
-        <div class="product-details d-flex align-items-center">
-            <img [src]="item.productImage" alt="image">
-            <h4 class="ps-4 text-capitalize">{{ item.productName }}</h4>
+    <!-- Page banner area start here -->
+    <section class="page-banner bg-image pt-130 pb-130"
+        data-background="assets/images/banner/inner-banner.jpg"
+        style="background-image: url(assets/images/banner/inner-banner.jpg);">
+        <div class="container">
+            <h2 class="wow fadeInUp mb-15" data-wow-duration="1.1s"
+                data-wow-delay=".1s">Cart Page</h2>
+            <div class="breadcrumb-list wow fadeInUp" data-wow-duration="1.3s"
+                data-wow-delay=".3s">
+                <a href="index-2.html" class="primary-hover"><i
+                        class="fa-solid fa-house me-1"></i> Home <i
+                        class="fa-regular text-white fa-angle-right"></i></a>
+                <span>Cart</span>
+            </div>
         </div>
-        <div class="product-price">₹{{ item.productCurrentRate }}</div> 
-        <div class="product-quantity">
-            <input type="number" [(ngModel)]="item.quantity" min="1"> 
-        </div>
-        <div class="product-line-price">₹{{ item.quantity * item.productCurrentRate }}</div> 
-        <div class="product-removal">
-            <button class="remove-product" (click)="RemoveCart(item)">
-                <i class="fa-solid fa-x heading-color"></i>
-            </button>
-        </div>
-    </div>
-      <div class="totals">
-        <div class="totals-item theme-color float-end ">
-          <span class="fw-bold text-uppercase py-2">cart total =</span>
-          <div class="totals-value d-inline py-2 pe-2" id="cart-subtotal">{{ cartTotal}}</div>
-        </div>
-        <div class="deleteicon" (click)="DeleteAlertpopup=true">
-            <i class="fa fa-trash" aria-hidden="true"></i>
-          </div>
-      </div>
-</div>
-          
-              
+    </section>
+    <!-- Page banner area end here -->
 
-              <div class="emptypopup" *ngIf="cartproduct?.items.length==0">
-                <div class="image">
-                    <img src="../../assets/images/no cart.png">
+    <!-- cart page area start here -->
+    <section class="cart-page pt-130 pb-130">
+        <div class="container">
+
+            <div class="shopping-cart radius-10 bor sub-bg">
+
+                <div
+                    class="column-labels py-3 px-4 d-flex justify-content-between align-items-center fw-bold text-white text-uppercase">
+                    <label class="product-details">Product</label>
+                    <label class="product-price">Price</label>
+                    <label class="product-quantity">Quantity</label>
+                    <label class="product-line-price">Total</label>
+                    <label class="product-removal">Edit</label>
                 </div>
-              <button (click)="continueCart()">Continue add product</button>
-              </div>
 
-          </div>
-          <!-- shopping-cart-mobile -->
-          <div class="shopping-cart mobile-view bor sub-bg" *ngIf="cartproduct?.items?.length!=0">
+                <div>
+                    <div
+                        class="product p-4 bor-bottom d-flex justify-content-between align-items-center"
+                        *ngFor="let item of cartproduct.items">
+                        <div class="product-details d-flex align-items-center">
+                            <img [src]="item.productImage" alt="image">
+                            <h4 class="ps-4 text-capitalize">{{ item.productName
+                                }}</h4>
+                        </div>
+                        <div class="product-price">₹{{ item.productCurrentRate
+                            }}</div>
+                        <div class="product-quantity">
+                            <input type="number" [(ngModel)]="item.quantity"
+                                min="1">
+                        </div>
+                        <div class="product-line-price">₹{{ item.quantity *
+                            item.productCurrentRate }}</div>
+                        <div class="product-removal">
+                            <button class="remove-product"
+                                (click)="RemoveCart(item)">
+                                <i class="fa-solid fa-x heading-color"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="totals">
+                        <div class="totals-item theme-color float-end ">
+                            <span class="fw-bold text-uppercase py-2">cart total
+                                =</span>
+                            <div class="totals-value d-inline py-2 pe-2"
+                                id="cart-subtotal">{{ cartTotal}}</div>
+                        </div>
+                        <div class="deleteicon" (click)="DeleteAlertpopup=true">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </div>
+                    </div>
 
-              <div class="product p-4 bor-top bor-bottom" *ngFor="let item of cartproduct.items">
-                  <div class="product-details d-flex align-items-center">
-                      <img [src]="item.productImage" alt="image">
-                      <h4 class="ps-4 text-capitalize">{{ item.productName }}</h4>
-                  </div>
-                  <div class="product-price">₹{{ item.productCurrentRate }}</div>
-                  <div class="product-quantity">
-                      <input type="number"  [(ngModel)]="item.quantity" value="2" min="1">
-                  </div>
-                  <div class="product-line-price">₹{{ item.quantity * item.productCurrentRate }}</div>
-                  <div class="product-removal">
-                      <button class="remove-product" (click)="RemoveCart(item)">
-                          <i class="fa-solid fa-x heading-color"></i>
-                      </button>
-                  </div>
-              </div>
-              <div class="totals">
-                  <div class="totals-item theme-color float-end">
-                      <span class="fw-bold text-uppercase py-2">cart total =</span>
-                      <div class="totals-value d-inline py-2 pe-2">{{ cartTotal}}</div>
-                  </div>
-                  <div class="deleteicon"  (click)="DeleteAlertpopup=true">
+                    <div class="Checkoutbutton">
+                        <button (click)="RouteCheckout()">CheckOut</button>
+                    </div>
+                </div>
+                <div class="emptypopup" *ngIf="EmptyCart">
+                    <div class="image">
+                        <img src="../../assets/images/no cart.png">
+                    </div>
+                    <button (click)="continueCart()">Continue add
+                        product</button>
+                </div>
+
+            </div>
+
+            <!-- shopping-cart-mobile -->
+            <div class="shopping-cart mobile-view bor sub-bg">
+
+                <div class="product p-4 bor-top bor-bottom"
+                    *ngFor="let item of cartproduct.items">
+                    <div class="product-details d-flex align-items-center">
+                        <img [src]="item.productImage" alt="image">
+                        <h4 class="ps-4 text-capitalize">{{ item.productName
+                            }}</h4>
+                    </div>
+                    <div class="product-price">₹{{ item.productCurrentRate
+                        }}</div>
+                    <div class="product-quantity">
+                        <input type="number" [(ngModel)]="item.quantity"
+                            value="2" min="1">
+                    </div>
+                    <div class="product-line-price">₹{{ item.quantity *
+                        item.productCurrentRate }}</div>
+                    <div class="product-removal">
+                        <button class="remove-product"
+                            (click)="RemoveCart(item)">
+                            <i class="fa-solid fa-x heading-color"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="totals">
+                    <div class="totals-item theme-color float-end ">
+                        <span class="fw-bold text-uppercase py-2">cart total
+                            =</span>
+                        <div class="totals-value d-inline py-2 pe-2"
+                            id="cart-subtotal">{{ cartTotal}}</div>
+                    </div>
+                    <div class="deleteicon" (click)="DeleteAlertpopup=true">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </div>
+                </div>
+
+                <div class="Checkoutbutton">
+                    <button (click)="RouteCheckout()">CheckOut</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- cart page area end here -->
+
+    <div class="cartDeletepopup" *ngIf="DeleteAlertpopup">
+        <div id="app" class="container">
+            <div class="close" (click)="DeleteAlertpopup=false">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div class="DeleteAlert">
+                <div class="icon">
                     <i class="fa fa-trash" aria-hidden="true"></i>
-                  </div>
-              </div>
-
-          </div>
-      </div>
-  </section>
-  <!-- cart page area end here -->
-
-
-  <div class="cartDeletepopup" *ngIf="DeleteAlertpopup">
-    
-    <div id="app" class="container">
-        <div class="close" (click)="DeleteAlertpopup=false">
-            <i class="fa fa-times" aria-hidden="true"></i>
-        </div>
-        <div class="DeleteAlert">
-            <div class="icon">
-                <i class="fa fa-trash" aria-hidden="true"></i>
-                <h1>Are You Sure !</h1>
+                    <h1>Are You Sure !</h1>
+                </div>
+                <div class="text">
+                    <p>All Cart Items Deleted</p>
+                </div>
             </div>
-            <div class="text">
-                <p>All Cart Items Deleted</p>
+            <div class="button">
+                <button class="Cancel"
+                    (click)="DeleteAlertpopup=false">Cancel</button>
+                <button class="delete" (click)="deleteAllCart()">Delete</button>
             </div>
         </div>
-        <div class="button">
-            <button class="Cancel" (click)="DeleteAlertpopup=false">Cancel</button>
-            <button class="delete" (click)="deleteAllCart()">Delete</button>
-        </div>
+
     </div>
-
-  </div>
 </main>

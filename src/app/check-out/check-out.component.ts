@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceService } from '../service.service';
 import { CartComponent } from '../cart/cart.component';
+import { ServiceService } from '../service/service.service';
 
 @Component({
   selector: 'app-check-out',
@@ -11,7 +11,7 @@ export class CheckOutComponent  implements OnInit {
   Name:any
   email:any;
   Company:any
-  country:any
+  country: any;
   phone:any;
   zipcode:any
   // state:any
@@ -23,6 +23,12 @@ export class CheckOutComponent  implements OnInit {
   cartproduct:any=[]
   cartTotal: number = 0;
   paymentValue:any=[]
+
+  FeedbackName:any
+  Feedbackemail:any;
+  FeedbackComment:any;
+  rating:any 
+  Feedbackpopup:boolean=false
   constructor(public api:ServiceService) { }
 
   ngOnInit() {
@@ -55,16 +61,6 @@ export class CheckOutComponent  implements OnInit {
 
   submitLogin(){
     let post={
-      // "name":this.Name,
-      // "email":this.email,
-      // "company":this.Company,
-      // "country":"Germany",
-      // "phone":this.phone,
-      // "zipcode":this.zipcode,
-      // "state":"Georgia",
-      // "city":this.city,
-      // "street1":this.street1,
-      // "street2":this.street2
        "amount": this.cartTotal,
   	   "currency": "INR"
     }
@@ -79,11 +75,10 @@ export class CheckOutComponent  implements OnInit {
 
   order:any=[]
   async payWithRazorpay() {
-    const amount = this.cartTotal * 100; // Amount in paise (smallest currency unit)
+    const amount = this.cartTotal * 100; 
     const currency = 'INR';
 
     try {
-      // Call your backend to create an order
        this.order = await this.api.CreateOrder({ amount, currency }).toPromise();
 
       const options = {
@@ -128,6 +123,16 @@ export class CheckOutComponent  implements OnInit {
       })
     })
   }
+
+  onCountryChange(event: Event) {
+    const selectElement = event.target as HTMLSelectElement;
+    const selectedValue = selectElement.value;
+    this.country = selectedValue; // Update the ngModel-bound property
+
+    console.log('Selected Country ID:', selectedValue);
+    // Add any additional logic you need based on the selected value
+  }
+
   checkoutProduct() {
     let productsArray = this.cartproduct.items.map((item: any) => {
       return {
@@ -141,24 +146,43 @@ export class CheckOutComponent  implements OnInit {
       userId: this.Id,
       name: this.Name,
       email: this.email,
-      country: "France",
+      country: this.country,
       street: this.street1 + ' ' + this.street2,
       city: this.city,
-      state: "New York",  // Use actual state value if available
+      state: "New York", 
       zipCode: this.zipcode,
       phone: this.phone,
       orderNotes: "Please deliver between 9 AM and 12 PM.",
       products: productsArray,
     };
+    console.log(post);
+    
   
     this.api.CheckOutProduct(post).subscribe({
       next: (res) => {
         console.log(res);
+        this.Feedbackpopup=true
       },
       error: (err) => {
         console.error('Error processing checkout:', err);
       },
     });
   }
-  
+
+
+  Feedback(){
+let post={
+  "customerName": this.FeedbackName,
+  "email": this.Feedbackemail,
+  "feedbackText": this.FeedbackComment,
+  "rating": this.rating
+}
+console.log(post);
+this.api.SendFeedback(post).subscribe({
+  next:(res=>{
+    console.log(res);
+    
+  })
+})
+  }
 }

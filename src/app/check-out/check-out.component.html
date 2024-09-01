@@ -27,12 +27,12 @@
                       <label class="mb-10" for="companyName">Company Name (Optional)</label>
                       <input class="mb-20" id="companyName" type="text" [(ngModel)]="Company">
                       <h5 class="mb-10">Country / Region *</h5>
-                      <select class="mb-20" name="subject" [(ngModel)]="country">
-                          <option value="0">United state america</option>
-                          <option value="1">United Kingdom</option>
-                          <option value="2">Australia</option>
-                          <option value="3">Germany</option>
-                          <option value="4">France</option>
+                      <select class="mb-20" name="subject" [(ngModel)]="country" (change)="onCountryChange($event)">
+                        <option  >United States of America</option>
+                        <option >United Kingdom</option>
+                        <option >Australia</option>
+                        <option >Germany</option>
+                        <option >France</option>
                       </select>
                       <label class="mb-10" for="streetAddress">Street Address *</label>
                       <input placeholder="1837 E Homer M Adams Pkwy" class="mb-10" id="streetAddress" type="text" [(ngModel)]="street1">
@@ -107,4 +107,37 @@
       </div>
   </section>
   <!-- Checkout area end here -->
+
+
+
+  <!-- feedbackpoup -->
+  <div class="feedbackpopup"  *ngIf="Feedbackpopup">
+    <div class="wrapper">  
+      <input type="text" placeholder="Name" class="nameInput" 
+             oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" 
+             [(ngModel)]="FeedbackName">
+      <input type="text" placeholder="Email" class="nameInput" 
+             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+             [(ngModel)]="Feedbackemail">
+  
+      <div class="rate-box">
+        <input type="radio" name="star" id="star0" [(ngModel)]="rating" value="5"/>
+        <label class="star" for="star0"></label>
+        <input type="radio" name="star" id="star1" [(ngModel)]="rating" value="4"/>
+        <label class="star" for="star1"></label>
+        <input type="radio" name="star" id="star2" [(ngModel)]="rating" value="3"/>
+        <label class="star" for="star2"></label>
+        <input type="radio" name="star" id="star3" [(ngModel)]="rating" value="2"/>
+        <label class="star" for="star3"></label>
+        <input type="radio" name="star" id="star4" [(ngModel)]="rating" value="1"/>
+        <label class="star" for="star4"></label>
+      </div>
+  
+      <textarea cols="30" rows="6" placeholder="Tell us about your experience!" 
+                [(ngModel)]="FeedbackComment"></textarea>
+      <div class="submit-btn" (click)="Feedback()">Send</div>
+    </div>
+  </div>
+  
+  
 </main>
